@@ -8,7 +8,7 @@ using System.Security.Authentication;
 
 namespace PizzaStoreTests
 {
-    public class PizzaStoreTests
+    public class UserServiceTests
     {
         [Fact]
         public void IsAmountValid()
@@ -51,18 +51,6 @@ namespace PizzaStoreTests
             //Act & Assert             
             var exception = Assert.Throws<ArgumentException>(() => userService.CreateUser("тест", 100));
             var message = "тест is invalid.";
-            Assert.Equal(message, exception.Message);
-        }
-
-        [Fact]
-        public void ChoosePizza()
-        {
-            //arrange
-            var pizzaService = new PizzaService(new PizzaValidator());
-
-            //Act & Assert             
-            var exception = Assert.Throws<ArgumentException>(() => pizzaService.ChoosePizza("тест"));
-            var message = "тест does not exist. Please choose another.";
             Assert.Equal(message, exception.Message);
         }
     }
