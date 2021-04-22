@@ -7,10 +7,10 @@ using PizzaStore.Services;
 namespace PizzaStore.Tests
 {
     [TestFixture]
-    public class Tests
+    public class UserValidatorTests
     {        
         [Test]
-        public void PositiveTestForNameValidator()
+        public void PositiveTestForName()
         {            
             var validator = new UserValidator();
 
@@ -20,17 +20,17 @@ namespace PizzaStore.Tests
         }
 
         [Test]
-        public void NegativeTestForNameValidator()
+        public void NegativeTestForName()
         {
             var validator = new UserValidator();
-
+            
             var result = validator.IsNameValid("Nice01 ###");
 
             Assert.AreEqual(false, result);
         }
 
         [Test]
-        public void PositiveTestForAmountValidatior()
+        public void PositiveTestForAmount()
         {
             var validator = new UserValidator();
 
@@ -40,7 +40,7 @@ namespace PizzaStore.Tests
         }
 
         [Test]
-        public void NegativeTestForAmountValidatior()
+        public void NegativeTestForAmount()
         {
             var validator = new UserValidator();
 
@@ -48,5 +48,7 @@ namespace PizzaStore.Tests
 
             Assert.AreEqual(false, result);
         }
+
+        
     }
 }
