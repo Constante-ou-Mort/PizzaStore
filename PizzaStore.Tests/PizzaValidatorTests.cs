@@ -8,13 +8,13 @@ namespace PizzaStore.Tests
     public class PizzaValidatorTests
     {
         [Test]
-        public void ValidatePizzaType()
+        public void CheckExistingPizzaType()
         {
             var pizzaValidator = new PizzaValidator();
-            var pizzaType = PizzaType.California;
-            var pizza = "4";
+            var pizzaType = PizzaType.Neapolitan;
+            var pizza = "1";
             
-            Assert.False(pizzaValidator.IsPizzaTypeValid(pizza, out pizzaType));
+            Assert.True(pizzaValidator.IsPizzaTypeValid(pizza, out pizzaType));
         }
     }
 }
