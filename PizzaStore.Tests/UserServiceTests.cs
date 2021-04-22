@@ -18,14 +18,19 @@ namespace PizzaStore.Tests
         {
             _userValidator = new UserValidator();
             _userService = new UserService(_userValidator);   
-        } 
+        }
+        
+        [TearDown]
+        public void TearDown()
+        {
+            _userService = null;
+            _userService = null;
+        }
 
         [Test]
-        public void checkValid()
-        {
-            
-
-            var user = _userService.CreateUser("Vasya", 15);
+        public void CheckValid()
+        {           
+             var user = _userService.CreateUser("Vasya", 15);
 
             Assert.Multiple(() =>
             {
@@ -35,6 +40,20 @@ namespace PizzaStore.Tests
             });
         }
 
-        
+        [Test]
+        public void CheckInvalidName()
+        {
+            var ex = Assert.Throws<ArgumentException>(() => _userService.CreateUser("###", 20));
+
+            Assert.That(ex.Message, Is.EqualTo("### is invalid."));
+        }
+
+        [Test]
+        public void CheckInvalidAmount()
+        {
+            var ex = Assert.Throws<ArgumentException>(() => _userService.CreateUser("Vasya", -20));
+
+            Assert.That(ex.Message, Is.EqualTo("-20 is invalid."));
+        }
     }
 }
