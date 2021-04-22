@@ -20,7 +20,7 @@ namespace PizzaStore.Test
         }
 
         [Fact]
-        public void IsNameValid_KyrrilicShoudNotValidate()
+        public void IsNameValid_KyrilicShoudNotValidate()
         {
             // Arrange
             var userValidator = new UserValidator();
@@ -32,5 +32,49 @@ namespace PizzaStore.Test
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void IsAmountValid_MoreThanZeroValidate()
+        {
+            // Arrange
+            var userValidator = new UserValidator();
+            bool expected = true;
+
+            // Act
+            bool actual = userValidator.IsAmountValid(1.0);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void IsAmountValid_LessThanZeroNotValidate()
+        {
+            // Arrange
+            var userValidator = new UserValidator();
+            bool expected = false;
+
+            // Act
+            bool actual = userValidator.IsAmountValid(-1);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void IsAmountValid_ZeroNotValidate()
+        {
+            // Arrange
+            var userValidator = new UserValidator();
+            bool expected = false;
+
+            // Act
+            bool actual = userValidator.IsAmountValid(0);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+
     }
 }
