@@ -24,7 +24,7 @@ namespace PizzaStore.Tests
         {
             var validator = new PizzaValidator();
 
-            var result = validator.IsPizzaTypeValid("Detroit", out var pizzaType);
+            var result = validator.IsPizzaTypeValid("1", out var pizzaType);
 
             Assert.IsTrue(result);
         }
