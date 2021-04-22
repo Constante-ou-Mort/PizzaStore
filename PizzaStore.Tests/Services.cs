@@ -33,5 +33,15 @@ namespace PizzaStore.Tests
 
             Assert.Equal(expectedResult, actualResult);
         }
+        
+             [Fact]
+        public void PositiveChoosePizza()
+        {
+            var expectedResult = new Pizza { Price = 10, Name = nameof(PizzaType.Neapolitan) };
+  
+            var actualResult = new PizzaService(new PizzaValidator()).ChoosePizza("Neapolitan");
+
+            Assert.Equal(expectedResult, actualResult);
+        }
     }
 }
