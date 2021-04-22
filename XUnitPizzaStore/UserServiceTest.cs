@@ -9,9 +9,6 @@ namespace PizzaStore.Test
         [Fact]
         public void CreateUser_CreatesUserWhenNameAndAmountAreValid()
         {
-            // Arrange
-            var uservalidator = new UserValidator();
-
             // Act
             var user = new User("Leonid", 100);
 
