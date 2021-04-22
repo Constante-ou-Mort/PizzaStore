@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading;
+using PizzaStore.Models;
+using PizzaStore.Validators;
 
-namespace PizzaStore
+namespace PizzaStore.Services
 {
     public class PizzaService
     {
@@ -39,7 +41,7 @@ namespace PizzaStore
 
         public Pizza CreatePizza(Pizza pizza)
         {
-            var ingredients = PizzaIngredients.GetIngredientsByPizzaType(pizza.Type);
+            var ingredients = PizzaIngredientsService.GetIngredientsByPizzaType(pizza.Type);
             pizza.Ingredients = ingredients;
 
             var bakedPizza = BakePizza(pizza);

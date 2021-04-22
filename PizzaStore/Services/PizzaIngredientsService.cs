@@ -2,7 +2,7 @@
 
 namespace PizzaStore
 {
-    public static class PizzaIngredients
+    public static class PizzaIngredientsService
     {
         private static readonly Dictionary<PizzaType, List<string>> _ingredients = new Dictionary<PizzaType, List<string>>
         {

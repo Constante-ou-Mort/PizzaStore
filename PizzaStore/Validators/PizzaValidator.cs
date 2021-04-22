@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PizzaStore
+namespace PizzaStore.Validators
 {
     public class PizzaValidator
     {

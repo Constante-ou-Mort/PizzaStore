@@ -1,6 +1,8 @@
 ﻿using System;
+using PizzaStore.Models;
+using PizzaStore.Validators;
 
-namespace PizzaStore
+namespace PizzaStore.Services
 {
     public class UserService
     {

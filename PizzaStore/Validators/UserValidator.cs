@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace PizzaStore
+namespace PizzaStore.Validators
 {
     public class UserValidator
     {
