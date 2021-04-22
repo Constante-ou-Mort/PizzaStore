@@ -18,7 +18,7 @@ namespace PizzaStore
             var pizzaService = new PizzaService(new PizzaValidator());
             var menu = new Menu(pizzaService, user);
 
-            menu.MakeOrder();
+            menu.SelectOption();
         }
     }
 }
