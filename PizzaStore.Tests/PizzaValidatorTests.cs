@@ -15,18 +15,29 @@ namespace PizzaStore.Tests
         {
             var validator = new PizzaValidator();
 
-            var result = validator.IsPizzaTypeValid("Neapolitan", out var pizzaType);
+            var result = validator.IsPizzaTypeValid("1", out var pizzaType);
 
-            Assert.IsTrue(result);
+            Assert.AreEqual("Neapolitan", pizzaType);
         }
 
+        [Test]
         public void PositiveDetroitPizzaValidator()
         {
             var validator = new PizzaValidator();
 
-            var result = validator.IsPizzaTypeValid("1", out var pizzaType);
+            var result = validator.IsPizzaTypeValid("2", out var pizzaType);
 
-            Assert.IsTrue(result);
+            Assert.AreEqual("Detroit", pizzaType);
+        }
+
+        [Test]
+        public void PositiveCaliforniaPizzaValidator()
+        {
+            var validator = new PizzaValidator();
+
+            var result = validator.IsPizzaTypeValid("3", out var pizzaType);
+
+            Assert.AreEqual("California", pizzaType);
         }
     }
 }
