@@ -3,6 +3,7 @@ using PizzaStore.Models;
 using PizzaStore.Services;
 using PizzaStore.Validators;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace PizzaStore.Tests
@@ -40,6 +41,16 @@ namespace PizzaStore.Tests
             var expectedResult = new Pizza { Price = 10, Name = nameof(PizzaType.Neapolitan) };
   
             var actualResult = new PizzaService(new PizzaValidator()).ChoosePizza("Neapolitan");
+
+            Assert.Equal(expectedResult, actualResult);
+        }
+        
+               [Fact]
+        public void PositiveChoosePizzaIngredients()
+        {
+            var expectedResult = new List<string>  { "Flour", "Mozzarella", "Tomato", "Tomato sauce", "Basil", "Yeast", "Olive oil" };
+
+            var actualResult = PizzaIngredientsService.GetIngredientsByPizzaType(PizzaType.Neapolitan);
 
             Assert.Equal(expectedResult, actualResult);
         }
