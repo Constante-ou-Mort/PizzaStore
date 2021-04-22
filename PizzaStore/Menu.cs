@@ -20,7 +20,7 @@ namespace PizzaStore
             Console.WriteLine($"Choose any pizza: (1){PizzaType.California} (8$) , (2){PizzaType.Detroit}(10$), (3){PizzaType.Neapolitan}(12$)");
             var pizzaType = Console.ReadLine();
 
-            _pizzaService.ChoosePizza(pizzaType);
+            var pizza = _pizzaService.ChoosePizza(pizzaType);
             _pizzaService.PayForPizza(_user);
             var createdPizza = _pizzaService.CreatePizza(pizza);
 
