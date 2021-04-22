@@ -4,6 +4,7 @@ using PizzaStore.Models;
 using System;
 using Xunit;
 using PizzaStore.Validators;
+using System.Security.Authentication;
 
 namespace PizzaStoreTests
 {
@@ -13,15 +14,44 @@ namespace PizzaStoreTests
         public void IsAmountValid()
         {
             //arrange
-            var userValidator = new UserService(new UserValidator());
-            //userValidator.CreateUser("Test", -100);
+            var userService = new UserService(new UserValidator());      
 
-            //act
+            //Act & Assert 
+            Assert.Throws<ArgumentException>(() => userService.CreateUser("Test", -100));
+        }
 
+        [Fact]
+        public void MessageForIsAmountValid()
+        {
+            //arrange
+            var userService = new UserService(new UserValidator());
 
-            //Assert   
+            //Act & Assert 
+            var exception = Assert.Throws<ArgumentException>(() => userService.CreateUser("Test", -100));
+            var message = "-100 is invalid.";
+            Assert.Equal(message, exception.Message);
+        }
 
-            Assert.Throws<ArgumentException>(() => userValidator.CreateUser("Test", -100));
+        [Fact]
+        public void IsNameValid()
+        {
+            //arrange
+            var userService = new UserService(new UserValidator());   
+
+            //Act & Assert   
+            Assert.Throws<ArgumentException>(() => userService.CreateUser("тест", 100)); 
+        }
+
+        [Fact]
+        public void MessageForIsNameValid()
+        {
+            //arrange
+            var userService = new UserService(new UserValidator());
+
+            //Act & Assert             
+            var exception = Assert.Throws<ArgumentException>(() => userService.CreateUser("тест", 100));
+            var message = "тест is invalid.";
+            Assert.Equal(message, exception.Message);
         }
     }
 }
