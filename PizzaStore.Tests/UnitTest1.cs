@@ -5,18 +5,37 @@ namespace PizzaStore.Tests
 {
     public class UserValiddatorTests
     {
+        private UserValidator _user;
+
+        [SetUp]
+        public void Setup()
+        {
+            _user = new UserValidator();
+        }
 
         [Test]
         public void UserValiddator_ValidAmount()
         {
-            var userAmount = new UserValidator();
             var positiveAmount = 3;
             var negativeAmount = -12;
 
             Assert.Multiple(() =>
             {
-                Assert.True(userAmount.IsAmountValid(positiveAmount));
-                Assert.False(userAmount.IsAmountValid(negativeAmount));
+                Assert.True(_user.IsAmountValid(positiveAmount));
+                Assert.False(_user.IsAmountValid(negativeAmount));
+            });
+        }
+
+        [Test]
+        public void UserValiddator_ValidName()
+        {
+            var valid = "Kate";
+            var notValid = "@##!1";
+
+            Assert.Multiple(() =>
+            {
+                Assert.True(_user.IsNameValid(valid));
+                Assert.False(_user.IsNameValid(notValid));
             });
         }
     }
