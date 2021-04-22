@@ -47,8 +47,6 @@ namespace PizzaStore.Tests
             var result = validator.IsAmountValid(-20);
 
             Assert.AreEqual(false, result);
-        }
-
-        
+        }        
     }
 }
