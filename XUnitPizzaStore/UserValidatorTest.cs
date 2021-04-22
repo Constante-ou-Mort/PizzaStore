@@ -4,7 +4,8 @@ using Xunit;
 namespace PizzaStore.Test
 {
     public class UserValidatorTest
-    {    
+    {
+        
         [Fact]
         public void IsNameValid_LatinAndNumbersShoudValidate()
         {
@@ -28,6 +29,20 @@ namespace PizzaStore.Test
 
             // Act
             bool actual = userValidator.IsNameValid("Серега");
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void IsNameValid_SpecialSymbolsNotValidate()
+        {
+            // Arrange
+            var userValidator = new UserValidator();
+            bool expected = false;
+
+            // Act
+            bool actual = userValidator.IsNameValid("@#");
 
             // Assert
             Assert.Equal(expected, actual);
@@ -74,7 +89,5 @@ namespace PizzaStore.Test
             // Assert
             Assert.Equal(expected, actual);
         }
-
-
     }
 }
