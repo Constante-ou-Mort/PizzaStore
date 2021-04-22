@@ -10,6 +10,7 @@ namespace PizzaStore.Tests
 {
     public class Services
     {
+       
         [Fact]
         public void PositiveUserCheck()
         {
@@ -20,6 +21,7 @@ namespace PizzaStore.Tests
 
             var actualResult = new UserService(new UserValidator()).CreateUser(name, amount);
 
+          
             Assert.Equal(expectedResult, actualResult);
         }
         [Fact]
@@ -28,21 +30,22 @@ namespace PizzaStore.Tests
             var name = "   МИКОЛ@-";
             var amount = -100;
 
-            var expectedResult = new User(name, amount);
+            var expectedResult = "-100 is invalid.";
 
-            var actualResult = new UserService(new UserValidator()).CreateUser(name, amount);
+            var actualResult =  Assert.Throws<ArgumentException>(()=> new UserService(new UserValidator()).CreateUser(name, amount));
 
-            Assert.Equal(expectedResult, actualResult);
+            Assert.Equal(expectedResult, actualResult.Message);
+            
         }
         
              [Fact]
         public void PositiveChoosePizza()
         {
-            var expectedResult = new Pizza { Price = 10, Name = nameof(PizzaType.Neapolitan) };
+            Pizza expectedResult = new Pizza { Price = 10, Name = nameof(PizzaType.Neapolitan) };
   
-            var actualResult = new PizzaService(new PizzaValidator()).ChoosePizza("Neapolitan");
+            Pizza actualResult = new PizzaService(new PizzaValidator()).ChoosePizza("Neapolitan");
 
-            Assert.Equal(expectedResult, actualResult);
+            Assert.True(expectedResult.Equals(actualResult));
         }
         
                [Fact]

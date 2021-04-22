@@ -10,5 +10,11 @@
             Name = name;
             Amount = amount;
         }
+        public override bool Equals(object obj)
+        {
+            User user = obj as User;
+            return user != null && user.Name == Name && user.Amount == Amount;
+
+        }
     }
 }
