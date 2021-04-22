@@ -17,18 +17,13 @@ namespace PizzaStore.Tests
             Assert.False(userValidator.IsAmountValid(amount));
         }
 
-        [Test]
-        public void ValidateName()
+        [TestCase("Світлана")]
+        [TestCase("!@#$%^&*()_-+=")]
+        public void ValidateName(string name)
         {
             var userValidator = new UserValidator();
-            var name1 = "Світлана";
-            var name2 = "!@#$%^&*()_-+=";
             
-            Assert.Multiple(() =>
-            {
-                Assert.False(userValidator.IsNameValid(name1));
-                Assert.False(userValidator.IsNameValid(name2));
-            });
+            Assert.False(userValidator.IsNameValid(name));
         }
     }
 }
