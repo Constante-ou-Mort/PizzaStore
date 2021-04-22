@@ -9,8 +9,11 @@ namespace PizzaStore.Test
         [Fact]
         public void CreateUser_CreatesUserWhenNameAndAmountAreValid()
         {
+            // Arrange
+            var userService = new UserService(new UserValidator());
+            
             // Act
-            var user = new User("Leonid", 100);
+            var user = userService.CreateUser("Leonid", 100);            
 
             // Assert
             Assert.NotNull(user);                        

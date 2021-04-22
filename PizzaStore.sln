@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaStore", "PizzaStore\PizzaStore.csproj", "{F4C2CEEB-6593-4342-8CBF-2E3955CE348A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaStore.Test", "XUnitPizzaStore\PizzaStore.Test.csproj", "{F9322E96-ED9B-4CDD-85BC-C8A0DBE65B3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaStore.Test", "PizzaStore.Test\PizzaStore.Test.csproj", "{F9322E96-ED9B-4CDD-85BC-C8A0DBE65B3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
