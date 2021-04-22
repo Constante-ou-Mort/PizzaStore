@@ -8,14 +8,15 @@ namespace PizzaStore.Tests
 {
     public class PizzaServiceTests
     {
+        [TestCase("1", "California")]
+        [TestCase("2", "Detroit")]
+        [TestCase("3", "Neapolitan")]
         [Test]
-        public void TryChooseExistingPizza()
+        public void TryChooseExistingPizza(string pizzaName, string pizza)
         {
-            var pizzaName = "1";
             var pizzaService = new PizzaService(new PizzaValidator());
-            var pizza = new Pizza {Price = 10, Name = nameof(PizzaType.Neapolitan)};
 
-            Assert.AreEqual(pizza, pizzaService.ChoosePizza(pizzaName));
+            Assert.AreEqual(pizza, pizzaService.ChoosePizza(pizzaName).Name);
         }
         
         [Test]
