@@ -2,6 +2,7 @@
 using System;
 using Xunit;
 using PizzaStore.Validators;
+using System.Runtime.CompilerServices;
 
 namespace PizzaStoreTests
 {
@@ -56,9 +57,9 @@ namespace PizzaStoreTests
             var pizzaService = new PizzaService(new PizzaValidator());
 
             //Act & Assert             
-            var exception = Assert.Throws<ArgumentException>(() => pizzaService.ChoosePizza("4"));
-            var message = "4 does not exist. Please choose another.";
-            Assert.Equal(message, exception.Message);           
+            var exception = Assert.Throws<SwitchExpressionException>(() => pizzaService.ChoosePizza("4"));
+            var message = "Non-exhaustive switch expression failed to match its input.\r\nUnmatched value was 4.";
+            Assert.Equal(message, exception.Message);        
         } 
     }
 }
