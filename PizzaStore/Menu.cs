@@ -9,7 +9,7 @@ namespace PizzaStore
         private readonly PizzaService _pizzaService;
         private readonly User _user;
 
-        public Menu(PizzaService pizzaService,User user)
+        public Menu(PizzaService pizzaService, User user)
         {
             _pizzaService = pizzaService;
             _user = user;

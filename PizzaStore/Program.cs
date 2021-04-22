@@ -17,7 +17,7 @@ namespace PizzaStore
             var user = new UserService(new UserValidator()).CreateUser(name, amount);
             var pizzaService = new PizzaService(new PizzaValidator());
             var menu = new Menu(pizzaService, user);
-            
+
             menu.SelectOption();
         }
     }

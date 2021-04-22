@@ -35,7 +35,7 @@ namespace PizzaStore.Services
             user.Amount -= _pizza.Price;
 
             Console.WriteLine($"You paid was successful. Pizza price {_pizza.Price}, you current amount {user.Amount}");
-            
+
             return user;
         }
 
@@ -60,7 +60,7 @@ namespace PizzaStore.Services
             pizza.IsBaked = true;
 
             Console.WriteLine($"\nYour pizza {pizza.Name} is ready.");
-            
+
             return pizza;
         }
     }
