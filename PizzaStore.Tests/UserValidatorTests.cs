@@ -5,12 +5,12 @@ namespace PizzaStore.Tests
 {
     public class UserValiddatorTests
     {
-        private UserValidator _user;
+        private UserValidator user;
 
         [SetUp]
         public void Setup()
         {
-            _user = new UserValidator();
+            user = new UserValidator();
         }
 
         [Test]
@@ -21,8 +21,8 @@ namespace PizzaStore.Tests
 
             Assert.Multiple(() =>
             {
-                Assert.True(_user.IsAmountValid(positiveAmount));
-                Assert.False(_user.IsAmountValid(negativeAmount));
+                Assert.True(user.IsAmountValid(positiveAmount));
+                Assert.False(user.IsAmountValid(negativeAmount));
             });
         }
 
@@ -30,12 +30,12 @@ namespace PizzaStore.Tests
         public void UserValiddator_ValidName()
         {
             var valid = "Kate";
-            var notValid = "@##!1";
+            var invalid = "ÀÂÎÂàù";
 
             Assert.Multiple(() =>
             {
-                Assert.True(_user.IsNameValid(valid));
-                Assert.False(_user.IsNameValid(notValid));
+                Assert.True(user.IsNameValid(valid));
+                Assert.False(user.IsNameValid(invalid));
             });
         }
     }
