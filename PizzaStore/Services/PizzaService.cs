@@ -45,7 +45,7 @@ namespace PizzaStore.Services
 
         public Pizza CreatePizza(Pizza pizza)
         {
-            var ingredients = PizzaIngredientsService.GetIngredientsByPizzaType(pizza.Type);
+            var ingredients = PizzaIngredientsService.GetIngredientsByPizzaType(pizza.Name);
             pizza.Ingredients = ingredients;
 
             var bakedPizza = BakePizza(pizza);
