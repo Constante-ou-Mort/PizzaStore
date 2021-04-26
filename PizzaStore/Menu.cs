@@ -21,10 +21,20 @@ namespace PizzaStore
             var pizzaType = Console.ReadLine();
 
             var pizza = _pizzaService.ChoosePizza(pizzaType);
-            _pizzaService.PayForPizza(_user);
-            var createdPizza = _pizzaService.CreatePizza(pizza);
+            Pizza createdPizza;
 
-            Console.WriteLine($"{_user.Name}, please, take your {createdPizza.Name} pizza.");
+            if (_pizzaService.PayForPizza(_user))
+            {
+                createdPizza = _pizzaService.CreatePizza(pizza);
+
+                Console.WriteLine($"{_user.Name}, please, take your {createdPizza.Name} pizza.");
+            }
+            if (_user.Amount >= 8)
+            {
+                this.MakeOrder();
+            }
+            else
+                Console.WriteLine($"{_user.Name}, please, come back when you'll have enough money for pizza.");
         }
     }
 }

@@ -22,21 +22,25 @@ namespace PizzaStore.Services
 
             _pizza = pizzaType switch
             {
-                PizzaType.Neapolitan => new Pizza { Price = 10, Name = nameof(PizzaType.Neapolitan) },
-                PizzaType.Detroit => new Pizza { Price = 12, Name = nameof(PizzaType.Detroit) },
-                PizzaType.California => new Pizza { Price = 20, Name = nameof(PizzaType.California) }
+                PizzaType.Neapolitan => new Pizza { Price = 12, Name = nameof(PizzaType.Neapolitan) },
+                PizzaType.Detroit => new Pizza { Price = 10, Name = nameof(PizzaType.Detroit) },
+                PizzaType.California => new Pizza { Price = 8, Name = nameof(PizzaType.California) },
             };
 
             return _pizza;
         }
 
-        public User PayForPizza(User user)
+        public bool PayForPizza(User user)
         {
-            user.Amount -= _pizza.Price;
-
-            Console.WriteLine($"You paid was successful. Pizza price {_pizza.Price}, you current amount {user.Amount}");
-
-            return user;
+            if (user.Amount >= _pizza.Price)
+            {
+                user.Amount -= _pizza.Price;
+                Console.WriteLine($"You paid was successful. Pizza price {_pizza.Price}, you current amount {user.Amount}");
+                return true;
+            }
+            else
+                Console.WriteLine($"You don't have anough money. Pizza price {_pizza.Price}, your amount {user.Amount}");
+            return false;
         }
 
         public Pizza CreatePizza(Pizza pizza)
