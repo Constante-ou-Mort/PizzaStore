@@ -7,25 +7,14 @@ namespace PizzaStore.Tests
 {
     public class PizzaValidatorTests
     {
-        [TestCase("1")]
-        [TestCase("2")]
-        [TestCase("3")]
-        public void CheckPizzaTypesPositive(string pizza)
+        [Test]
+        public void CheckExistingPizzaType()
         {
             var pizzaValidator = new PizzaValidator();
-            PizzaType PizzaType;
+            var pizzaType = PizzaType.Neapolitan;
+            var pizza = "1";
             
-            Assert.True(pizzaValidator.IsPizzaTypeValid(pizza, out PizzaType));
-        }
-        
-        [TestCase("0")]
-        [TestCase("4")]
-        public void CheckPizzaTypesNegative(string pizza)
-        {
-            var pizzaValidator = new PizzaValidator();
-            PizzaType PizzaType;
-            
-            Assert.False(pizzaValidator.IsPizzaTypeValid(pizza, out PizzaType));
+            Assert.True(pizzaValidator.IsPizzaTypeValid(pizza, out pizzaType));
         }
     }
 }
