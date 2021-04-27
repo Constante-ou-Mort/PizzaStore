@@ -57,5 +57,37 @@ namespace PizzaStore.Tests
 
             Assert.Equal(expectedResult, actualResult);
         }
+
+        [Fact]
+        public void PositivePayForPizza()
+        {
+            User user = new User("Illia", 1000);
+
+            var actualResult = new UserService(new UserValidator()).PayForPizza(user);
+            var expectedResult = 1000 - 10;
+
+            Assert.Equal(expectedResult, actualResult.Amount);
+        }
+
+        [Fact]
+        public void NegativePayForPizza()
+        {
+            User user = new User("Illia", 1);
+
+            var actualResult = new UserService(new UserValidator()).PayForPizza(user);
+            var expectedResult = 1 - 10;
+
+            Assert.Equal(expectedResult, actualResult.Amount);
+        }
+
+        [Fact]
+        public void TestBakePizza()
+        {
+            Pizza pizza = new Pizza { Price = 10, Name = nameof(PizzaType.Neapolitan);
+
+            var actualResult = new UserService(new UserValidator()).BakePizza(pizza);
+
+            Assert.True(actualResult.IsBaked);
+        }
     }
 }
