@@ -13,17 +13,17 @@ namespace PizzaStore
                 }
             },
             {
-                PizzaType.California, new List<string>
-                {
-                    "Honey", "Olive oil","Flour","Salt","Red onion","Black olives","Mushrooms"
-                }
-            },
-            {
                 PizzaType.Detroit, new List<string>
                 {
                     "White sugar", "Olive oil","Bread flour","Kosher salt","Red onion","Garlic","Mushrooms"
                 }
-            }
+            },
+            {
+                PizzaType.California, new List<string>
+                {
+                    "Honey", "Olive oil","Flour","Salt","Red onion","Black olives","Mushrooms"
+                }
+            } 
         };
 
         public static List<string> GetIngredientsByPizzaType(PizzaType pizzaType)

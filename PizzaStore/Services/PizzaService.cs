@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Threading;
-using PizzaStore.Models;
-using PizzaStore.Validators;
 
-namespace PizzaStore.Services
+namespace PizzaStore
 {
     public class PizzaService
     {
@@ -20,7 +18,7 @@ namespace PizzaStore.Services
             if (!_pizzaValidator.IsPizzaTypeValid(pizzaName, out var pizzaType))
                 throw new ArgumentException($"{pizzaName} does not exist. Please choose another.");
 
-            _pizza = pizzaType switch
+            _pizza = (pizzaType-1) switch
             {
                 PizzaType.Neapolitan => new Pizza { Price = 10, Name = nameof(PizzaType.Neapolitan) },
                 PizzaType.Detroit => new Pizza { Price = 12, Name = nameof(PizzaType.Detroit) },
@@ -30,13 +28,28 @@ namespace PizzaStore.Services
             return _pizza;
         }
 
-        public User PayForPizza(User user)
+        internal object CreatePizza(object pizza)
         {
-            user.Amount -= _pizza.Price;
+            throw new NotImplementedException();
+        }
 
-            Console.WriteLine($"You paid was successful. Pizza price {_pizza.Price}, you current amount {user.Amount}");
+        internal object ChoosePizza(int pizzaType)
+        {
+            throw new NotImplementedException();
+        }
 
-            return user;
+        public Boolean PayForPizza(User user)
+        {
+            
+            if (user.Amount >= _pizza.Price)
+            {
+                user.Amount -= _pizza.Price;
+                Console.WriteLine($"You paid was successful. Pizza price {_pizza.Price}, you current amount {user.Amount}");
+                return true;
+            }
+            else
+                Console.WriteLine($"You don't have anough money");
+                return false;
         }
 
         public Pizza CreatePizza(Pizza pizza)

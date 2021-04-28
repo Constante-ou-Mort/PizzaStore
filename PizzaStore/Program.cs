@@ -1,6 +1,4 @@
 ﻿using System;
-using PizzaStore.Services;
-using PizzaStore.Validators;
 
 namespace PizzaStore
 {

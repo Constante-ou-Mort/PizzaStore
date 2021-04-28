@@ -1,4 +1,4 @@
-﻿namespace PizzaStore.Models
+﻿namespace PizzaStore
 {
     public class User
     {
