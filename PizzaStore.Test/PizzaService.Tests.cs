@@ -5,9 +5,8 @@ using PizzaStore.Validators;
 using System;
 
 namespace PizzaStore.Test
-{
-    
-    public class PizzaServiceTest
+{    
+    public class PizzaServiceTests
     {               
         [Fact]
         public void PayForPizza_SubstractsSpecifiedNumberFromUserAmount()

@@ -1,12 +1,11 @@
 using Xunit;
 using PizzaStore.Validators;
 using PizzaStore.Services;
-using PizzaStore.Models;
 using System;
 
 namespace PizzaStore.Test
 {
-    public class UserServiceTest
+    public class UserServiceTests
     {
         [Fact]
         public void CreateUser_CreatesUserWhenNameAndAmountAreValid()

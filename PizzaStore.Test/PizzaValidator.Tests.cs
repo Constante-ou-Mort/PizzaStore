@@ -1,12 +1,9 @@
 ﻿using PizzaStore.Validators;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace PizzaStore.Test
 {
-    public class PizzaValidatorTest
+    public class PizzaValidatorTests
     {
         [Fact]
         public void IsPizzaTypeValid_ReturnTrueIfPizzaTypeValid()
