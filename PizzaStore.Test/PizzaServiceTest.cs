@@ -31,9 +31,9 @@ namespace PizzaStore.Test
             // Arrange
             User user = new User("Vasya", 1);
             PizzaService pizzaService = new PizzaService(new PizzaValidator());
-            pizzaService.ChoosePizza(nameof(PizzaType.Neapolitan));            
 
             // Act            
+            pizzaService.ChoosePizza(nameof(PizzaType.Neapolitan));
 
             // Assert
             Assert.Throws<ArgumentException>(() => pizzaService.PayForPizza(user));
