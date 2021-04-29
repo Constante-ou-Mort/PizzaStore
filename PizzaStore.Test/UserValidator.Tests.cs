@@ -3,7 +3,7 @@ using Xunit;
 
 namespace PizzaStore.Test
 {
-    public class UserValidatorTest
+    public class UserValidatorTests
     {
         
         [Fact]

@@ -6,7 +6,7 @@ using System;
 
 namespace PizzaStore.Test
 {
-    public class UserServiceTest
+    public class UserServiceTests
     {
         [Fact]
         public void CreateUser_CreatesUserWhenNameAndAmountAreValid()

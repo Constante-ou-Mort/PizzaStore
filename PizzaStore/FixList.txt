@@ -1,0 +1,4 @@
+﻿1. Fixed incorrect prices in menu
+2. Fixed incorrect commands in menu
+3. Added throwing exception if amount less than pizza price
+4. Fixed method IsAmountValid in UserValidator class. Now it is throwing exception if amount is zero or less.
