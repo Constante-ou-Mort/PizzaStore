@@ -2,8 +2,8 @@
 {
     public enum PizzaType
     {
-        Neapolitan,
+        California = 1,
         Detroit,
-        California
+        Neapolitan
     }
 }
