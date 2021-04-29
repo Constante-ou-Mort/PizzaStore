@@ -9,10 +9,16 @@ namespace PizzaStore.Services
     {
         private readonly PizzaValidator _pizzaValidator;
         private Pizza _pizza;
+        private PizzaValidator pizzaValidator;
 
         public PizzaService(object pizzaValidator1, PizzaValidator pizzaValidator)
         {
             _pizzaValidator = pizzaValidator;
+        }
+
+        public PizzaService(PizzaValidator pizzaValidator)
+        {
+            this.pizzaValidator = pizzaValidator;
         }
 
         public Pizza ChoosePizza(string pizzaName)

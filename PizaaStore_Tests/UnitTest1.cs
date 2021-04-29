@@ -59,17 +59,4 @@ namespace PizzaStoreTests
 
         }
     }
-    public class PizzaValidatorTests
-    {
-        [Test]
-        public void PositivePizzaValidator()
-        {
-            // Arrange
-            var validator = new PizzaValidator();
-            // Act
-            var result = validator.IsPizzaTypeValid("California", out var pizzaType);
-            // Assert
-            Assert.IsTrue(result);
-        }
-    }
 }
