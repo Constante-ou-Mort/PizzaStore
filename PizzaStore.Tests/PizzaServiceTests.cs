@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using PizzaStore.Models;
 using PizzaStore.Services;
@@ -8,48 +9,74 @@ namespace PizzaStore.Tests
 {
     public class PizzaServiceTests
     {
-        [TestCase("1", "California")]
-        [TestCase("2", "Detroit")]
-        [TestCase("3", "Neapolitan")]
         [Test]
-        public void TryChooseExistingPizza(string pizzaName, string pizza)
+        public void TryChooseExistingPizza()
         {
             var pizzaService = new PizzaService(new PizzaValidator());
+            var userPizza = pizzaService.ChoosePizza("1");
 
-            Assert.AreEqual(pizza, pizzaService.ChoosePizza(pizzaName).Name);
+            var expectedPizza = new Pizza { Price = 10, Name = nameof(PizzaType.Neapolitan) };
+
+            Assert.AreEqual(expectedPizza.Name, userPizza.Name);
+        }
+        
+        [Test]
+        public void TryBakePizza()
+        {
+            var pizzaService = new PizzaService(new PizzaValidator());
+            var pizza = pizzaService.ChoosePizza("California");
+
+            pizzaService.CreatePizza(pizza);
+
+            Assert.True(pizza.IsBaked);
         }
         
         [Test]
         public void TryChooseNonExistingPizza()
         {
-            const string pizzaName = "random";
             var pizzaService = new PizzaService(new PizzaValidator());
+            const string pizzaName = "random";
             
             var ex = Assert.Throws<ArgumentException>(() => pizzaService.ChoosePizza(pizzaName));
             Assert.That(ex.Message, Is.EqualTo($"{pizzaName} does not exist. Please choose another."));
         }
 
-        //requires more work
         [Test]
-        public void CheckPositiveAmount(int amount = 100, string name = "Svitlana")
+        public void CheckPositiveAmount(double amount = 100, string name = "Svitlana")
         {
             var pizzaService = new PizzaService(new PizzaValidator());
-            var user = new User(name, amount);
+            var richUser = new User(name, amount);
             
-            Assert.That(pizzaService.PayForPizza(user), Is.TypeOf<bool>());
+            pizzaService.ChoosePizza("California");
+            var newAmount = richUser.Amount - 8;
+
+            pizzaService.PayForPizza(richUser);
+
+            Assert.AreEqual(newAmount, richUser.Amount);
         }
 
         [Test]
-        public void CheckNegativeAmount(int amount = 0, string name = "Svitlana")
+        public void CheckNegativeAmount(double amount = 1, string name = "Svitlana")
         {
             var pizzaService = new PizzaService(new PizzaValidator());
-            var user = new User(name, amount);
-            var pizza = new Pizza();
+            var poorUser = new User(name, amount);
 
-            if (pizza.Price > user.Amount)
-            {
-                Assert.Throws<ArgumentException>(() => pizzaService.PayForPizza(user));
-            }
+            pizzaService.ChoosePizza("California");
+            
+            var ex = Assert.Throws<ArgumentException>(() => pizzaService.PayForPizza(poorUser));
+            Assert.That(ex.Message, Is.EqualTo("You do not have enough funds to buy that pizza."));
+        }
+        
+        [Test]
+        public void BakeCalifornia()
+        {
+            var pizzaService = new PizzaService(new PizzaValidator());
+            var california1 = pizzaService.ChoosePizza("California");
+            var california = PizzaIngredientsService.GetIngredientsByPizzaType(california1.Type);
+
+            List<string> californiaIngridients = new List<string>() { "Honey", "Olive oil","Flour","Salt","Red onion","Black olives","Mushrooms" };
+
+            Assert.AreEqual(californiaIngridients, california);
         }
     }
 }
