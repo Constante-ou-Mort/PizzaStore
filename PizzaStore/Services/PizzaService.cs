@@ -32,10 +32,12 @@ namespace PizzaStore.Services
 
         public User PayForPizza(User user)
         {
+            if (user.Amount < _pizza.Price)
+                throw new ArgumentException("You don't have enough money");
+
             user.Amount -= _pizza.Price;
 
             Console.WriteLine($"You paid was successful. Pizza price {_pizza.Price}, you current amount {user.Amount}");
-
             return user;
         }
 
