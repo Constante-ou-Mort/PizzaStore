@@ -17,7 +17,7 @@ namespace PizzaStore
 
         public void MakeOrder()
         {
-            Console.WriteLine($"Choose any pizza: (1){PizzaType.California} (8$) , (2){PizzaType.Detroit}(10$), (3){PizzaType.Neapolitan}(12$)");
+            Console.WriteLine($"Choose any pizza: (0){PizzaType.Neapolitan} (10$) , (1){PizzaType.Detroit}(12$), (2){PizzaType.California}(20$)");
             var pizzaType = Console.ReadLine();
 
             var pizza = _pizzaService.ChoosePizza(pizzaType);

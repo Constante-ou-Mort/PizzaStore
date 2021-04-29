@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 
 namespace PizzaStore.Validators
 {
@@ -11,6 +12,9 @@ namespace PizzaStore.Validators
 
         public bool IsAmountValid(double amount)
         {
+            if (amount < 1)
+                throw new ArgumentException("You need to have some money to buy pizza!");
+            
             return !(amount < 0);
         }
     }
