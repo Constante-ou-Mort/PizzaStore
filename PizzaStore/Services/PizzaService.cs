@@ -22,9 +22,9 @@ namespace PizzaStore.Services
 
             _pizza = pizzaType switch
             {
-                PizzaType.Neapolitan => new Pizza { Price = 12, Name = nameof(PizzaType.Neapolitan) },
-                PizzaType.Detroit => new Pizza { Price = 10, Name = nameof(PizzaType.Detroit) },
-                PizzaType.California => new Pizza { Price = 8, Name = nameof(PizzaType.California) }
+                PizzaType.neapolitan => new Pizza { Price = 12, Name = nameof(PizzaType.neapolitan) },
+                PizzaType.detroit => new Pizza { Price = 10, Name = nameof(PizzaType.detroit) },
+                PizzaType.california => new Pizza { Price = 8, Name = nameof(PizzaType.california) }
             };
 
             return _pizza;
