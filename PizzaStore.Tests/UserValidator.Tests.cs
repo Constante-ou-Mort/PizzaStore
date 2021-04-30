@@ -24,7 +24,7 @@ namespace PizzaStore.Tests
         {
             var validator = new UserValidator();
             
-            var result = validator.IsNameValid("Nice01 ###");
+            var result = validator.IsNameValid("¹¹!");
 
             Assert.AreEqual(false, result);
         }

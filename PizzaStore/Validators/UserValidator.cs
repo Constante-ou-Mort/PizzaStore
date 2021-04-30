@@ -5,8 +5,9 @@ namespace PizzaStore.Validators
     public class UserValidator
     {
         public bool IsNameValid(string name)
-        {
-            return Regex.IsMatch(name, "[a-z0-9 ]+", RegexOptions.IgnoreCase);
+        {            
+            var check = @"[a-zA-Z0-9 ]+";
+            return Regex.IsMatch(name, check);
         }
 
         public bool IsAmountValid(double amount)

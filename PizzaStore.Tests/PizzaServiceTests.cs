@@ -15,7 +15,7 @@ namespace PizzaStore.Tests
         public void CaliforniaPizzaTest()
         {
             var validator = new PizzaValidator();
-            var pizzaToBake = new PizzaService(validator).ChoosePizza("0");
+            var pizzaToBake = new PizzaService(validator).ChoosePizza("1");
 
             Pizza result = new Pizza { Price = 8, Name = nameof(PizzaType.California) };            
 
@@ -30,7 +30,7 @@ namespace PizzaStore.Tests
         public void DetroitPizzaTest()
         {
             var validator = new PizzaValidator();
-            var pizzaToBake = new PizzaService(validator).ChoosePizza("1");
+            var pizzaToBake = new PizzaService(validator).ChoosePizza("2");
 
             Pizza result = new Pizza { Price = 10, Name = nameof(PizzaType.Detroit) };
 
@@ -45,7 +45,7 @@ namespace PizzaStore.Tests
         public void NeapolitanPizzaTest()
         {
             var validator = new PizzaValidator();
-            var pizzaToBake = new PizzaService(validator).ChoosePizza("2");
+            var pizzaToBake = new PizzaService(validator).ChoosePizza("3");
 
             Pizza result = new Pizza { Price = 12, Name = nameof(PizzaType.Neapolitan) };
 
@@ -69,18 +69,6 @@ namespace PizzaStore.Tests
             pizzaService.PayForPizza(user);
 
             Assert.AreEqual(result, user.Amount);
-        }
-                
-        [Test]
-        public void TryToMakeDetroit()
-        {
-            var pizzaService = new PizzaService(new PizzaValidator());
-            var choose = pizzaService.ChoosePizza("Detroit");
-            var pizza = PizzaIngredientsService.GetIngredientsByPizzaType(choose.Type);
-
-            List<string> ingridients = new List<string>() { "White sugar", "Olive oil", "Bread flour", "Kosher salt", "Red onion", "Garlic", "Mushrooms" };
-
-            Assert.AreEqual(ingridients, pizza);
-        }
+        }    
     }
 }

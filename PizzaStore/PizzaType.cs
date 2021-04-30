@@ -1,9 +1,9 @@
 ﻿namespace PizzaStore
 {
     public enum PizzaType
-    {
-        Neapolitan,
-        Detroit,
-        California
+    {        
+        California =1,
+        Detroit = 2,
+        Neapolitan = 3
     }
 }
