@@ -19,6 +19,17 @@ namespace UnitTestPizzaStore
         }
 
         [Test]
+        public void CheckCreateUserNameInCyrillic()
+        {
+            var userValidator = new UserValidator();
+            var userService = new UserService(userValidator);
+
+            var result = Assert.Throws<ArgumentException>(() => userService.CreateUser("Юлія", 100));
+
+            Assert.That(result.Message, Is.EqualTo("Юлія is invalid."));
+        }
+
+        [Test]
         public void CheckCreateUserInvalidAmount()
         {
             var userValidator = new UserValidator();
